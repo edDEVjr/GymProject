@@ -2,11 +2,13 @@ package com.example.gym_project.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@Table (name = "funcionario")
 public class Funcionario  {
     @Id
     private UUID id;
