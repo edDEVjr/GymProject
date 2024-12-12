@@ -1,8 +1,6 @@
 package com.example.gym_project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
@@ -11,10 +9,20 @@ import java.util.UUID;
 @Table (name = "funcionario")
 public class Funcionario  {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
     private Date DataNascimento;
     private String CPF;
+
+    @Deprecated
+    public Funcionario() {}
+
+    public Funcionario(String nome, Date dataNascimento, String CPF){
+        this.nome = nome;
+        DataNascimento = dataNascimento;
+        this.CPF = CPF;
+    }
 
     public UUID getId() {
         return id;

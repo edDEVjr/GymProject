@@ -1,8 +1,6 @@
 package com.example.gym_project.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -10,12 +8,24 @@ import java.util.UUID;
 @Table(name = "endereco")
 public class Endereco {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String bairro;
     private String cidade;
     private String estado;
     private String logradouro;
     private String numero;
+
+    @Deprecated
+    public Endereco() {}
+
+    public Endereco(String bairro,String cidade, String estado, String logradouro, String numero) {
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.logradouro = logradouro;
+        this.numero = numero;
+    }
 
     public String getCidade() {
         return cidade;
