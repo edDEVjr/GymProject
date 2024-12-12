@@ -1,5 +1,6 @@
 package com.example.gym_project.models;
 
+import com.example.gym_project.repositories.FuncionarioRepository;
 import jakarta.persistence.*;
 
 import java.util.UUID;
@@ -40,4 +41,6 @@ public class Contato {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+
 }

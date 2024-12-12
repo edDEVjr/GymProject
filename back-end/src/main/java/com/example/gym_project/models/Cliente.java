@@ -18,6 +18,14 @@ public class Cliente {
     @Column(nullable = false)
     private LocalDate dataNascimento;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contato_id",referencedColumnName = "id")
+    private Contato contato;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id",referencedColumnName = "id")
+    private Endereco endereco;
+
     @Deprecated
     public Cliente() {}
 
@@ -54,5 +62,21 @@ public class Cliente {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
