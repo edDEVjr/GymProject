@@ -1,31 +1,36 @@
 package com.example.gym_project.models;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table (name = "funcionario")
-public class Funcionario  {
+@Table( name = "cliente")
+public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(nullable = false)
     private String nome;
-    private LocalDate dataNascimento;
+    @Column(unique = true,nullable = false)
     private String CPF;
+    @Column(nullable = false)
+    private LocalDate dataNascimento;
 
     @Deprecated
-    public Funcionario() {}
+    public Cliente() {}
 
-    public Funcionario(String nome, LocalDate dataNascimento, String CPF){
+    public Cliente(String nome, String CPF, LocalDate dataNascimento) {
         this.nome = nome;
-        this.dataNascimento = dataNascimento;
         this.CPF = CPF;
+        this.dataNascimento = dataNascimento;
     }
 
     public UUID getId() {
         return id;
     }
+
 
     public String getNome() {
         return nome;
@@ -35,16 +40,16 @@ public class Funcionario  {
         this.nome = nome;
     }
 
-    public LocalDate getDataNascimento() {
-        return dataNascimento;
-    }
-
     public String getCPF() {
         return CPF;
     }
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
     public void setDataNascimento(LocalDate dataNascimento) {
