@@ -2,6 +2,7 @@ package com.example.gym_project.dto;
 
 import com.example.gym_project.models.Funcionario;
 
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -50,5 +51,6 @@ public class FuncionarioDTO {
         this.id = funcionario.getId();
         this.nome = funcionario.getNome();
         this.CPF = funcionario.getCPF();
+        this.dataNascimento = funcionario.getDataNascimento();
     }
 }

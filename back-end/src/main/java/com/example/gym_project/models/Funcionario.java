@@ -11,6 +11,7 @@ public class Funcionario  {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
+    @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
     private String CPF;
 

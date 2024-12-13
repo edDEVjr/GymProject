@@ -6,7 +6,7 @@ import com.example.gym_project.repositories.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class FuncionarioService {
@@ -18,6 +18,7 @@ public class FuncionarioService {
 
     public boolean create(FuncionarioDTO funcionarioDTO) {
         try{
+            System.out.println(funcionarioDTO);
             Funcionario newFuncionario = new Funcionario();
             newFuncionario.setNome(funcionarioDTO.getNome());
             newFuncionario.setCPF(funcionarioDTO.getCPF());
@@ -28,18 +29,24 @@ public class FuncionarioService {
             return false;
         }
     }
-    
 
-    public List<Funcionario> findAll() {
-        return funcionarioRepository.findAll();
+    public List<FuncionarioDTO> getAll() {
+        List<Funcionario> funcionarios = funcionarioRepository.findAll();
+        return funcionarios.stream()
+                .map(FuncionarioDTO::new)
+                .collect(Collectors.toList());
+
     }
 
-    public Funcionario findById(FuncionarioDTO funcionarioDTO) {
+    public FuncionarioDTO findById(FuncionarioDTO funcionarioDTO) {
         if (funcionarioRepository.existsById(funcionarioDTO.getId())) {
-            return funcionarioRepository.findById(funcionarioDTO.getId()).get();
+            Funcionario funcionario = funcionarioRepository.findById(funcionarioDTO.getId()).get();
+            return new FuncionarioDTO(funcionario);
+        }else{
+            return null;
         }
-        return null;
     }
+
     public boolean save(Funcionario funcionario) {
         try{
             funcionarioRepository.save(funcionario);
