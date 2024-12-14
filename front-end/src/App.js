@@ -1,15 +1,21 @@
-
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route,useLocation} from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import CreateFuncionario from './components/Cadastro';
-import ShowFuncionarios from './components/Show';
+import Home from './components/Home';
+import CreateFuncionario from './components/funcionario/Cadastro';
+import Funcionarios from './components/funcionario/Principal';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <NavBar />
         <Routes>
-          <Route path="/funcionario" element={<ShowFuncionarios />} />
+          <Route></Route>
+          <Route path='/' element={<Home/>} />
+          <Route path="/funcionario" element={<Funcionarios />} />
           <Route path="/funcionario/new" element={<CreateFuncionario />} />
           
         </Routes>

@@ -1,0 +1,18 @@
+.link{
+    border: solid 1px;
+    border-radius: 2px;
+    box-shadow: 2px 1px ;
+    margin: 2px;
+}
+
+
+.link :hover{
+    background-color: brown;
+}
+
+.logo{
+    border: 1px solid;
+    padding: 20px 30px 20px 30px;
+    box-shadow: 2px 2px;
+    margin: 10px;
+}

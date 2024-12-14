@@ -1,0 +1,19 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form input{
+    width: 300px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.button{
+    background-color: rgb(249, 244, 244);
+    border-radius: 2px;
+    box-shadow: 2px 2px;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ShowFuncionarios = () => {
+const Funcionarios = () => {
   const [funcionarios, setFuncionarios] = useState([]);
   const [message, setMessage] = useState("");
 
@@ -24,30 +24,37 @@ const ShowFuncionarios = () => {
   }, []); // O array vazio faz com que a requisição seja feita apenas uma vez quando o componente for montado
 
   return (
-    <div>
-      <h1>Lista de Funcionários</h1>
-      {message && <p>{message}</p>}
-
-      <table>
-        <thead>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Lista de Funcionários</h1>
+      <table className="table table-striped table-hover">
+        <thead className="table-dark">
           <tr>
+            <th>#</th>
             <th>Nome</th>
             <th>CPF</th>
             <th>Data de Nascimento</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           {funcionarios.length > 0 ? (
-            funcionarios.map((funcionario) => (
+            funcionarios.map((funcionario, index) => (
               <tr key={funcionario.id}>
+                <td>{index + 1}</td>
                 <td>{funcionario.nome}</td>
                 <td>{funcionario.cpf}</td>
                 <td>{funcionario.dataNascimento}</td>
+                <td>
+                  <button className="btn btn-primary btn-sm me-2">Editar</button>
+                  <button className="btn btn-danger btn-sm">Excluir</button>
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="4">Nenhum funcionário encontrado.</td>
+              <td colSpan="5" className="text-center">
+                Nenhum funcionário encontrado.
+              </td>
             </tr>
           )}
         </tbody>
@@ -55,5 +62,6 @@ const ShowFuncionarios = () => {
     </div>
   );
 };
+      
 
-export default ShowFuncionarios;
+export default Funcionarios;

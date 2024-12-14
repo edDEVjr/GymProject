@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import "./Cadastro.css"
 
 const CreateFuncionario = () => {
   const [formData, setFormData] = useState({
@@ -33,13 +34,10 @@ const CreateFuncionario = () => {
 
       if (response.ok) {
         const data = await response.json();
+        //Mostrar mensagem
         setMessage(`Funcionário cadastrado com sucesso! Nome: ${data.nome}`);
-        // Limpar formulário
-        setFormData({
-          nome: "",
-          cpf: "",
-          dataNascimento: "",
-        });
+        //redireciona para /funcionario
+        window.location.href = "/funcionario";
       } else {
         setMessage("Erro ao cadastrar o funcionário.");
       }
@@ -51,7 +49,7 @@ const CreateFuncionario = () => {
   return (
     <div>
       <h1>Cadastrar Funcionário</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <div>
           <label>Nome:</label>
           <input
@@ -82,7 +80,7 @@ const CreateFuncionario = () => {
             required
           />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button className="button" type="submit">Cadastrar</button>
       </form>
       {message && <p>{message}</p>}
     </div>
