@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -19,14 +20,14 @@ public class FuncionarioController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<FuncionarioDTO>>showFuncionarios() {
+    public ResponseEntity<List<FuncionarioDTO>>index() {
         List<FuncionarioDTO> funcionarios = funcionarioService.getAll();
         return new ResponseEntity<>(funcionarios,HttpStatus.OK);
     }
 
 
     @PostMapping("/new")
-    public ResponseEntity<FuncionarioDTO> createFuncionario(@RequestBody FuncionarioDTO funcionarioDTO) {
+    public ResponseEntity<FuncionarioDTO> create(@RequestBody FuncionarioDTO funcionarioDTO) {
         if(this.funcionarioService.create(funcionarioDTO)){
             return new ResponseEntity<>(funcionarioDTO,HttpStatus.CREATED);
         }else{
@@ -34,12 +35,6 @@ public class FuncionarioController {
         }
 
     }
-
-
-
-
-
-
 
 
 

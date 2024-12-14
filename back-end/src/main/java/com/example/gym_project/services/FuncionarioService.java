@@ -6,6 +6,7 @@ import com.example.gym_project.repositories.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,9 +58,9 @@ public class FuncionarioService {
 
     }
 
-    public boolean delete(FuncionarioDTO funcionarioDTO) {
-        if(funcionarioRepository.existsById(funcionarioDTO.getId())) {
-            funcionarioRepository.deleteById(funcionarioDTO.getId());
+    public boolean delete(UUID id) {
+        if(funcionarioRepository.existsById(id)) {
+            funcionarioRepository.deleteById(id);
             return true;
         }else{
             return false;
