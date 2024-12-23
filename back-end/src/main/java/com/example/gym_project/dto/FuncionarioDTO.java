@@ -1,5 +1,7 @@
 package com.example.gym_project.dto;
 
+import com.example.gym_project.models.Contato;
+import com.example.gym_project.models.Endereco;
 import com.example.gym_project.models.Funcionario;
 
 
@@ -11,6 +13,8 @@ public class FuncionarioDTO {
     private String nome;
     private String CPF;
     private LocalDate dataNascimento;
+    private Endereco endereco;
+    private Contato contato;
 
     public FuncionarioDTO() {
     }
@@ -47,10 +51,31 @@ public class FuncionarioDTO {
         this.dataNascimento = dataNascimento;
     }
 
-    public FuncionarioDTO(Funcionario funcionario) {
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Contato getContato() {
+        return contato;
+    }
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+
+    public FuncionarioDTO(Funcionario funcionario){
         this.id = funcionario.getId();
         this.nome = funcionario.getNome();
         this.CPF = funcionario.getCPF();
         this.dataNascimento = funcionario.getDataNascimento();
+        this.endereco = funcionario.getEndereco();
+        this.contato = funcionario.getContato();
+    }
+
+    public FuncionarioDTO toFuncionario(Funcionario funcionario){
+        return new FuncionarioDTO(funcionario);
     }
 }

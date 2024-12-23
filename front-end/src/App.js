@@ -6,6 +6,7 @@ import Home from './components/Home';
 import CreateFuncionario from './components/funcionario/Cadastro';
 import Funcionarios from './components/funcionario/Principal';
 import NavBar from './components/NavBar';
+import ShowFuncionario from './components/funcionario/Show';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path="/funcionario" element={<Funcionarios />} />
           <Route path="/funcionario/new" element={<CreateFuncionario />} />
+          <Route path='/funcionario/:id' element={<ShowFuncionario/>} />
           
         </Routes>
         

@@ -6,6 +6,7 @@ import com.example.gym_project.repositories.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -39,13 +40,9 @@ public class FuncionarioService {
 
     }
 
-    public FuncionarioDTO findById(FuncionarioDTO funcionarioDTO) {
-        if (funcionarioRepository.existsById(funcionarioDTO.getId())) {
-            Funcionario funcionario = funcionarioRepository.findById(funcionarioDTO.getId()).get();
-            return new FuncionarioDTO(funcionario);
-        }else{
-            return null;
-        }
+    public Optional<Funcionario> getById(UUID id) {
+            Optional<Funcionario> funcionario = funcionarioRepository.findById(id);
+            return funcionario;
     }
 
     public boolean save(Funcionario funcionario) {

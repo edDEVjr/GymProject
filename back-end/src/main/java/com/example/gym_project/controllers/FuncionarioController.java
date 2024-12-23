@@ -1,12 +1,15 @@
 package com.example.gym_project.controllers;
 
 import com.example.gym_project.dto.FuncionarioDTO;
+import com.example.gym_project.models.Funcionario;
 import com.example.gym_project.services.FuncionarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -35,6 +38,20 @@ public class FuncionarioController {
         }
 
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Funcionario> show(@PathVariable UUID id) {
+            Optional<Funcionario> funcionario = funcionarioService.getById(id);
+            if(funcionario.isPresent()){
+                return new ResponseEntity<>(funcionario.get(),HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+    }
+
+
+
 
 
 
