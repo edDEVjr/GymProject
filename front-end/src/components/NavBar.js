@@ -9,7 +9,7 @@ import "./NavBar.css"
 function NavBar() {
     const location = useLocation();
     return (
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav  class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <div className="logo">GP</div>
                 <div class="collapse navbar-collapse" id="navbarNav">
