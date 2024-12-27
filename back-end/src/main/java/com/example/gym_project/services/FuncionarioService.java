@@ -32,6 +32,21 @@ public class FuncionarioService {
         }
     }
 
+    public boolean update(FuncionarioDTO funcionarioDTO) {
+        Optional<Funcionario> optionalFuncionario = funcionarioRepository.findById(funcionarioDTO.getId());
+        if(optionalFuncionario.isPresent()){
+            Funcionario funcionario = optionalFuncionario.get();
+            funcionario.setNome(funcionarioDTO.getNome());
+            funcionario.setCPF(funcionarioDTO.getCPF());
+            funcionario.setDataNascimento(funcionarioDTO.getDataNascimento());
+            save(funcionario);
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public List<FuncionarioDTO> getAll() {
         List<Funcionario> funcionarios = funcionarioRepository.findAll();
         return funcionarios.stream()

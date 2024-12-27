@@ -6,7 +6,6 @@ import com.example.gym_project.services.FuncionarioService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +48,20 @@ public class FuncionarioController {
             }
 
     }
+
+    @PutMapping("/{id}/edit")
+    public ResponseEntity<FuncionarioDTO> update(@PathVariable UUID id, @RequestBody FuncionarioDTO funcionarioDTO) {
+        Optional<Funcionario> funcionario = funcionarioService.getById(id);
+        if(funcionario.isPresent()) {
+            funcionarioDTO.setId(id);
+            funcionarioService.update(funcionarioDTO);
+            return new ResponseEntity<>(funcionarioDTO, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 
 
 

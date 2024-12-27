@@ -1,6 +1,5 @@
 import { React } from "react";
 import { useLocation } from "react-router-dom";
-
 import "./NavBar.css"
 
 
@@ -30,7 +29,7 @@ function NavBar() {
                                 <a class="nav-link active" aria-current="page" href="/#">Cliente</a>
                             </li>
                         )}
-                        {location.pathname == "/funcionario" && (
+                        {location.pathname === "/funcionario" && (
                             <li class="nav-item" className="link">
                                 <a class="nav-link active" aria-current="page" href="/funcionario/new">Cadastrar Funcionario</a>
                             </li>

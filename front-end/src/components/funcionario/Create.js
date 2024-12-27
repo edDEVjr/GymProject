@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import "./Cadastro.css"
+import "./Create.css"
 
 const CreateFuncionario = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +27,8 @@ const CreateFuncionario = () => {
         },
         body: JSON.stringify({
           nome: formData.nome,               // Correspondendo ao nome do campo
-          cpf: formData.cpf,                 // Correspondendo ao nome do campo
-          dataNascimento: formData.dataNascimento,  // Correspondendo ao nome do campo
+          cpf: formData.cpf,                
+          dataNascimento: formData.dataNascimento, 
         }),
       });
 
@@ -64,8 +64,8 @@ const CreateFuncionario = () => {
           <label>CPF:</label>
           <input
             type="text"
-            name="cpf"                    // Correspondente ao campo no estado
-            value={formData.cpf}          // Usando o estado correto
+            name="cpf"                  
+            value={formData.cpf}     
             onChange={handleChange}
             required
           />
@@ -74,8 +74,8 @@ const CreateFuncionario = () => {
           <label>Data de Nascimento:</label>
           <input
             type="date"
-            name="dataNascimento"        // Correspondente ao campo no estado
-            value={formData.dataNascimento} // Usando o estado correto
+            name="dataNascimento"        
+            value={formData.dataNascimento}
             onChange={handleChange}
             required
           />
